@@ -7,8 +7,6 @@ import query from '../queries/fetchSongs'
 class SongCreate extends Component {
     constructor(props) {
         super(props);
-
-        this.state = { title: '' };
     }
 
     onSubmit(event) {
