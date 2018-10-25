@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import lyricsFields from '../fragments/lyricsFields';
 
 class LyricCreate extends Component {
     constructor(props) {
@@ -38,16 +39,14 @@ const mutation = gql`
     mutation addLyric($content: String, $songId: ID) {
       addLyricToSong(content: $content, songId: $songId) {
         id
-        lyrics {
-          id
-          content
-          likes
-        }
+        ...lyricsFields
       }
     }
+    ${lyricsFields}
 `;
 
 export default graphql(mutation)(LyricCreate);
+
 
 
 
